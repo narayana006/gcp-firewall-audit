@@ -1,0 +1,391 @@
+[
+  {
+    "allowed": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "0-65535"
+        ]
+      },
+      {
+        "IPProtocol": "udp",
+        "ports": [
+          "0-65535"
+        ]
+      },
+      {
+        "IPProtocol": "icmp"
+      }
+    ],
+    "creationTimestamp": "2023-01-10T08:00:01.000-08:00",
+    "description": "Allow internal traffic on the default network",
+    "direction": "INGRESS",
+    "disabled": false,
+    "id": "4815162342000000000",
+    "kind": "compute#firewall",
+    "logConfig": {
+      "enable": false
+    },
+    "name": "default-allow-internal",
+    "network": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/networks/default",
+    "priority": 65534,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/firewalls/default-allow-internal",
+    "sourceRanges": [
+      "10.128.0.0/9"
+    ]
+  },
+  {
+    "allowed": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "22"
+        ]
+      }
+    ],
+    "creationTimestamp": "2023-01-10T08:00:01.000-08:00",
+    "description": "Allow SSH from anywhere",
+    "direction": "INGRESS",
+    "disabled": false,
+    "id": "4815162342000007919",
+    "kind": "compute#firewall",
+    "logConfig": {
+      "enable": false
+    },
+    "name": "default-allow-ssh",
+    "network": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/networks/default",
+    "priority": 65534,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/firewalls/default-allow-ssh",
+    "sourceRanges": [
+      "0.0.0.0/0"
+    ]
+  },
+  {
+    "allowed": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "3389"
+        ]
+      }
+    ],
+    "creationTimestamp": "2023-01-10T08:00:01.000-08:00",
+    "description": "Allow RDP from anywhere",
+    "direction": "INGRESS",
+    "disabled": false,
+    "id": "4815162342000015838",
+    "kind": "compute#firewall",
+    "logConfig": {
+      "enable": false
+    },
+    "name": "default-allow-rdp",
+    "network": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/networks/default",
+    "priority": 65534,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/firewalls/default-allow-rdp",
+    "sourceRanges": [
+      "0.0.0.0/0"
+    ]
+  },
+  {
+    "allowed": [
+      {
+        "IPProtocol": "icmp"
+      }
+    ],
+    "creationTimestamp": "2023-01-10T08:00:01.000-08:00",
+    "description": "Allow ICMP from anywhere",
+    "direction": "INGRESS",
+    "disabled": false,
+    "id": "4815162342000023757",
+    "kind": "compute#firewall",
+    "logConfig": {
+      "enable": false
+    },
+    "name": "default-allow-icmp",
+    "network": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/networks/default",
+    "priority": 65534,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/firewalls/default-allow-icmp",
+    "sourceRanges": [
+      "0.0.0.0/0"
+    ]
+  },
+  {
+    "allowed": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "80",
+          "443"
+        ]
+      }
+    ],
+    "creationTimestamp": "2025-03-05T10:12:44.123-08:00",
+    "description": "Public HTTPS to web tier",
+    "direction": "INGRESS",
+    "disabled": false,
+    "id": "4815162342000031676",
+    "kind": "compute#firewall",
+    "logConfig": {
+      "enable": true
+    },
+    "name": "allow-https-lb",
+    "network": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/networks/prod-vpc",
+    "priority": 1000,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/firewalls/allow-https-lb",
+    "sourceRanges": [
+      "0.0.0.0/0"
+    ],
+    "targetTags": [
+      "web"
+    ]
+  },
+  {
+    "allowed": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "80",
+          "443"
+        ]
+      }
+    ],
+    "creationTimestamp": "2025-03-05T10:12:44.123-08:00",
+    "description": "Google Cloud load balancer health checks",
+    "direction": "INGRESS",
+    "disabled": false,
+    "id": "4815162342000039595",
+    "kind": "compute#firewall",
+    "logConfig": {
+      "enable": false
+    },
+    "name": "allow-health-checks",
+    "network": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/networks/prod-vpc",
+    "priority": 1000,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/firewalls/allow-health-checks",
+    "sourceRanges": [
+      "35.191.0.0/16",
+      "130.211.0.0/22"
+    ],
+    "targetTags": [
+      "web"
+    ]
+  },
+  {
+    "allowed": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "5432"
+        ]
+      }
+    ],
+    "creationTimestamp": "2025-03-05T10:12:44.123-08:00",
+    "description": "TEMP: vendor debugging session",
+    "direction": "INGRESS",
+    "disabled": false,
+    "id": "4815162342000047514",
+    "kind": "compute#firewall",
+    "logConfig": {
+      "enable": false
+    },
+    "name": "allow-db-debug",
+    "network": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/networks/prod-vpc",
+    "priority": 900,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/firewalls/allow-db-debug",
+    "sourceRanges": [
+      "0.0.0.0/0",
+      "::/0"
+    ],
+    "targetTags": [
+      "db"
+    ]
+  },
+  {
+    "creationTimestamp": "2025-03-05T10:12:44.123-08:00",
+    "denied": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "5432"
+        ]
+      }
+    ],
+    "description": "Block Postgres from the internet",
+    "direction": "INGRESS",
+    "disabled": false,
+    "id": "4815162342000055433",
+    "kind": "compute#firewall",
+    "logConfig": {
+      "enable": false
+    },
+    "name": "deny-db-from-internet",
+    "network": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/networks/prod-vpc",
+    "priority": 1000,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/firewalls/deny-db-from-internet",
+    "sourceRanges": [
+      "0.0.0.0/0"
+    ],
+    "targetTags": [
+      "db"
+    ]
+  },
+  {
+    "allowed": [
+      {
+        "IPProtocol": "all"
+      }
+    ],
+    "creationTimestamp": "2025-03-05T10:12:44.123-08:00",
+    "description": "Incident 2025-06 break-glass",
+    "direction": "INGRESS",
+    "disabled": true,
+    "id": "4815162342000063352",
+    "kind": "compute#firewall",
+    "logConfig": {
+      "enable": false
+    },
+    "name": "allow-all-temp",
+    "network": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/networks/prod-vpc",
+    "priority": 500,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/firewalls/allow-all-temp",
+    "sourceRanges": [
+      "0.0.0.0/0"
+    ]
+  },
+  {
+    "allowed": [
+      {
+        "IPProtocol": "all"
+      }
+    ],
+    "creationTimestamp": "2025-03-05T10:12:44.123-08:00",
+    "description": "East-west traffic inside prod",
+    "direction": "INGRESS",
+    "disabled": false,
+    "id": "4815162342000071271",
+    "kind": "compute#firewall",
+    "logConfig": {
+      "enable": false
+    },
+    "name": "allow-internal-all",
+    "network": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/networks/prod-vpc",
+    "priority": 1000,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/firewalls/allow-internal-all",
+    "sourceRanges": [
+      "10.10.0.0/16"
+    ]
+  },
+  {
+    "allowed": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "22"
+        ]
+      }
+    ],
+    "creationTimestamp": "2025-03-05T10:12:44.123-08:00",
+    "description": "SSH through IAP TCP forwarding",
+    "direction": "INGRESS",
+    "disabled": false,
+    "id": "4815162342000079190",
+    "kind": "compute#firewall",
+    "logConfig": {
+      "enable": true
+    },
+    "name": "allow-ssh-iap",
+    "network": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/networks/prod-vpc",
+    "priority": 1000,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/firewalls/allow-ssh-iap",
+    "sourceRanges": [
+      "35.235.240.0/20"
+    ],
+    "targetTags": [
+      "ssh"
+    ]
+  },
+  {
+    "allowed": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "22"
+        ]
+      }
+    ],
+    "creationTimestamp": "2025-03-05T10:12:44.123-08:00",
+    "description": "Superseded by allow-ssh-iap",
+    "direction": "INGRESS",
+    "disabled": false,
+    "id": "4815162342000087109",
+    "kind": "compute#firewall",
+    "logConfig": {
+      "enable": false
+    },
+    "name": "allow-ssh-iap-old",
+    "network": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/networks/prod-vpc",
+    "priority": 2000,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/firewalls/allow-ssh-iap-old",
+    "sourceRanges": [
+      "35.235.240.0/20"
+    ],
+    "targetTags": [
+      "ssh"
+    ]
+  },
+  {
+    "allowed": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "8000-9999"
+        ]
+      }
+    ],
+    "creationTimestamp": "2025-03-05T10:12:44.123-08:00",
+    "description": "Legacy app port range",
+    "direction": "INGRESS",
+    "disabled": false,
+    "id": "4815162342000095028",
+    "kind": "compute#firewall",
+    "logConfig": {
+      "enable": false
+    },
+    "name": "allow-legacy-app",
+    "network": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/networks/prod-vpc",
+    "priority": 1000,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/firewalls/allow-legacy-app",
+    "sourceRanges": [
+      "0.0.0.0/0"
+    ],
+    "targetTags": [
+      "legacy-app"
+    ]
+  },
+  {
+    "creationTimestamp": "2025-03-05T10:12:44.123-08:00",
+    "denied": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "25"
+        ]
+      }
+    ],
+    "description": "Block outbound SMTP",
+    "destinationRanges": [
+      "0.0.0.0/0"
+    ],
+    "direction": "EGRESS",
+    "disabled": false,
+    "id": "4815162342000102947",
+    "kind": "compute#firewall",
+    "logConfig": {
+      "enable": true
+    },
+    "name": "deny-egress-smtp",
+    "network": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/networks/prod-vpc",
+    "priority": 1000,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/firewalls/deny-egress-smtp"
+  }
+]

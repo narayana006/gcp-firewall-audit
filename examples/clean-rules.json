@@ -1,0 +1,116 @@
+[
+  {
+    "allowed": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "80",
+          "443"
+        ]
+      }
+    ],
+    "creationTimestamp": "2025-03-05T10:12:44.123-08:00",
+    "description": "Public HTTPS to web tier",
+    "direction": "INGRESS",
+    "disabled": false,
+    "id": "4815162342000031676",
+    "kind": "compute#firewall",
+    "logConfig": {
+      "enable": true
+    },
+    "name": "allow-https-lb",
+    "network": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/networks/prod-vpc",
+    "priority": 1000,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/firewalls/allow-https-lb",
+    "sourceRanges": [
+      "0.0.0.0/0"
+    ],
+    "targetTags": [
+      "web"
+    ]
+  },
+  {
+    "allowed": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "22"
+        ]
+      }
+    ],
+    "creationTimestamp": "2025-03-05T10:12:44.123-08:00",
+    "description": "SSH through IAP TCP forwarding",
+    "direction": "INGRESS",
+    "disabled": false,
+    "id": "4815162342000079190",
+    "kind": "compute#firewall",
+    "logConfig": {
+      "enable": true
+    },
+    "name": "allow-ssh-iap",
+    "network": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/networks/prod-vpc",
+    "priority": 1000,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/firewalls/allow-ssh-iap",
+    "sourceRanges": [
+      "35.235.240.0/20"
+    ],
+    "targetTags": [
+      "ssh"
+    ]
+  },
+  {
+    "creationTimestamp": "2025-03-05T10:12:44.123-08:00",
+    "denied": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "25"
+        ]
+      }
+    ],
+    "description": "Block outbound SMTP",
+    "destinationRanges": [
+      "0.0.0.0/0"
+    ],
+    "direction": "EGRESS",
+    "disabled": false,
+    "id": "4815162342000102947",
+    "kind": "compute#firewall",
+    "logConfig": {
+      "enable": true
+    },
+    "name": "deny-egress-smtp",
+    "network": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/networks/prod-vpc",
+    "priority": 1000,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/firewalls/deny-egress-smtp"
+  },
+  {
+    "allowed": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "8080"
+        ]
+      }
+    ],
+    "creationTimestamp": "2025-03-05T10:12:44.123-08:00",
+    "description": "Web tier to app tier",
+    "direction": "INGRESS",
+    "disabled": false,
+    "id": "4815162342000110866",
+    "kind": "compute#firewall",
+    "logConfig": {
+      "enable": false
+    },
+    "name": "allow-app-from-web",
+    "network": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/networks/prod-vpc",
+    "priority": 1000,
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/acme-prod-1234/global/firewalls/allow-app-from-web",
+    "sourceTags": [
+      "web"
+    ],
+    "targetTags": [
+      "app"
+    ]
+  }
+]
